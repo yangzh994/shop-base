@@ -1,0 +1,13 @@
+server:
+  port: 6101
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:6001/eureka
+  instance:
+    hostname: localhost
+spring:
+  application:
+    name: shop-user-service
+
