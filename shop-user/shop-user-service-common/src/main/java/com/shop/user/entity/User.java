@@ -1,4 +1,4 @@
-package com.shop.controller.user.entity;
+package com.shop.user.entity;
 
 import java.util.Date;
 

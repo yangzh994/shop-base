@@ -1,7 +1,7 @@
 package com.shop.user.api.impl;
 
 import com.shop.user.api.UserService;
-import com.shop.controller.user.entity.User;
+import com.shop.user.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 

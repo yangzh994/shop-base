@@ -37,16 +37,10 @@
         <module>shop-user</module>
         <module>shop-product</module>
         <module>shop-eureka-server</module>
+        <module>shop-sku</module>
     </modules>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+
 
 </project>

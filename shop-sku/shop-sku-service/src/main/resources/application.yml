@@ -1,0 +1,12 @@
+server:
+  port: 6301
+spring:
+  application:
+    name: shop-sku-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:6001/eureka
+
+

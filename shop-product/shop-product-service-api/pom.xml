@@ -11,5 +11,14 @@
 
     <artifactId>shop-product-service-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yangzh.shop</groupId>
+            <artifactId>shop-product-service-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
 
 </project>

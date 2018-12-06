@@ -9,13 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shop-product</artifactId>
+    <artifactId>shop-sku</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>shop-product-service</module>
-        <module>shop-product-service-web</module>
-        <module>shop-product-service-common</module>
-        <module>shop-product-service-api</module>
+        <module>shop-sku-service</module>
+        <module>shop-sku-service-api</module>
+        <module>shop-sku-service-common</module>
     </modules>
 
 
