@@ -1,13 +1,26 @@
 server:
   port: 6101
 
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:6001/eureka
   instance:
     hostname: localhost
+
 spring:
   application:
     name: shop-user-service
+  datasource:
+    username: username
+    password: password
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql:///shop
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 
