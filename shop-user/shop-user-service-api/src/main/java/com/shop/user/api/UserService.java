@@ -15,4 +15,5 @@ public interface UserService {
 
     @PostMapping("/save")
     public void saveUser(@RequestBody User user);
+
 }

@@ -1,5 +1,6 @@
 server:
-  port: 7101
+  port: 8001
+
 spring:
   activemq:
     user: admin
@@ -9,13 +10,7 @@ spring:
       enabled: true
       max-connections: 20
   application:
-    name: shop-user-service-web
-eureka:
-  client:
-    serviceUrl:
-      defaultZone : http://localhost:6001/eureka
+    name: shop-sms
+
 
 sms.register : queue-register
-
-
-

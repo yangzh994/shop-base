@@ -40,6 +40,9 @@
         <module>shop-product</module>
         <module>shop-eureka-server</module>
         <module>shop-sku</module>
+        <module>shop-common</module>
+        <module>shop-common</module>
+        <module>shop-sms</module>
     </modules>
 
 

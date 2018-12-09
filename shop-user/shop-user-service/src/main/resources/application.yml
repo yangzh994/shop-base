@@ -13,8 +13,8 @@ spring:
   application:
     name: shop-user-service
   datasource:
-    username: username
-    password: password
+    username: root
+    password: 994397
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql:///shop
     driver-class-name: com.mysql.jdbc.Driver
