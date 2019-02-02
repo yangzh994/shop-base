@@ -3,16 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shop-user</artifactId>
+        <artifactId>shop-base</artifactId>
         <groupId>com.yangzh.shop</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shop-user-service</artifactId>
+    <artifactId>shop-sso</artifactId>
 
 
     <dependencies>
+
         <dependency>
             <groupId>com.yangzh.shop</groupId>
             <artifactId>shop-user-service-api</artifactId>
@@ -20,31 +21,28 @@
         </dependency>
 
         <dependency>
+            <groupId>com.yangzh.shop</groupId>
+            <artifactId>shop-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.0.6</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.0.18</version>
-        </dependency>
-
-
     </dependencies>
-
-
 
 
 
@@ -71,6 +69,4 @@
             </snapshots>
         </repository>
     </repositories>
-
-
 </project>

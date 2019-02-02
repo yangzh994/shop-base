@@ -1,0 +1,7 @@
+7101 shop-user-web    user.shop.com
+6101 shop-user-service
+8001 shop-sms         sms.shop.com
+6201 shop-product-service
+6301 shop-sku-service
+6001 shop-eureka-server
+6401 shop-sso        sso.shop.com

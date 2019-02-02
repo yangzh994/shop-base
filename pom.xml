@@ -43,6 +43,7 @@
         <module>shop-common</module>
         <module>shop-common</module>
         <module>shop-sms</module>
+        <module>shop-sso</module>
     </modules>
 
 

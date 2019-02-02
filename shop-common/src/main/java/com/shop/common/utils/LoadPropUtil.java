@@ -14,7 +14,7 @@ public class LoadPropUtil {
 
     public static Properties load(String path) throws IOException {
         Properties prop = new Properties();
-        InputStream in = LoadPropUtil.class.getClassLoader().getResourceAsStream("redis-conf.properties");
+        InputStream in = LoadPropUtil.class.getClassLoader().getResourceAsStream(path);
         prop.load(in);
         return prop;
     }

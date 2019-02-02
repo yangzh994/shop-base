@@ -1,16 +1,15 @@
 package com.shop.sms;
+import com.sun.jndi.toolkit.url.Uri;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 
@@ -177,20 +176,41 @@ public class SendSms {
 
 
 
-    public static void main(String[] args) {
-        SendSms post=new SendSms();
-        String method="sendSMS"; //表示发送短信
-        String username="username"; //用h户名
-        String password="password"; //密码
-        String mobile="手机号"; //合法的手机号码，号码间用英文逗号分隔
-        String content="【杨家板鸭】您的验证码是9999";//发送内容
-        content = post.urlEncode(content, "utf-8");//	采用utf-8 进行URLENCODE
-        String isLongSms="0"; //0-普通短信 1-加长短信
-        String extenno =""; //为通道扩展子号码，可以为空
-        String parm="method="+method+"&username="+username+"&password="+password+"&mobile="+mobile+"&content="+content+"&isLognSms="+isLongSms+"&extenno="+extenno;
-        String host="http://sms.smsyun.cc:9012/servlet/UserServiceAPIUTF8"; //提交地址http://sms.smsyun.cc:9012/servlet/UserServiceAPI
-        //发送 POST 请求
-        String sr=post.sendPost(host, parm);
-        System.out.println(sr);
+    public static void main(String[] args) throws Exception {
+//        SendSms post=new SendSms();
+//        String method="sendSMS"; //表示发送短信
+//        String username="username"; //用h户名
+//        String password="password"; //密码
+//        String mobile="手机号"; //合法的手机号码，号码间用英文逗号分隔
+//        String content="【杨家板鸭】您的验证码是9999";//发送内容
+//        content = post.urlEncode(content, "utf-8");//	采用utf-8 进行URLENCODE
+//        String isLongSms="0"; //0-普通短信 1-加长短信
+//        String extenno =""; //为通道扩展子号码，可以为空
+//        String parm="method="+method+"&username="+username+"&password="+password+"&mobile="+mobile+"&content="+content+"&isLognSms="+isLongSms+"&extenno="+extenno;
+//        String host="http://sms.smsyun.cc:9012/servlet/UserServiceAPIUTF8"; //提交地址http://sms.smsyun.cc:9012/servlet/UserServiceAPI
+//        //发送 POST 请求
+//        String sr=post.sendPost(host, parm);
+//        System.out.println(sr);
+        URL url = new URL("http://www.k25m.com/cn/star_list.php?prefix=B");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+      //  connection.setConnectTimeout(5*1000);
+        connection.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+        connection.connect();
+      //  Thread.sleep(2000l);
+        InputStream inputStream = connection.getInputStream();
+        byte[] data = new byte[1024 ];
+        StringBuffer sb = new StringBuffer();
+        int length = 0;
+        while ((length = inputStream.read(data)) != -1) {
+            String s = new String(data, Charset.forName("utf-8"));
+            sb.append(s);
+        }
+        String message = sb.toString();
+        inputStream.close();
+        connection.disconnect();
+
+        System.out.println(message);
     }
+
 }

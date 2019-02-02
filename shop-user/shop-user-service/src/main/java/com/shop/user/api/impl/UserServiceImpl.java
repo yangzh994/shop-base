@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -33,9 +34,20 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    @Override
-    public void saveUser(@RequestBody User user) {
+    public void registerUser(@RequestBody User user) {
         System.out.println(user);
-        userMapper.insert(user);
+       // System.out.println(code);
+        //  userMapper.insert(user);
     }
+
+    @Override
+    public User login(String username, String password) {
+        QueryWrapper query = new QueryWrapper();
+        query.eq("username",username);
+        query.eq("password",password);
+        User user = userMapper.selectOne(query);
+        return user;
+    }
+
+
 }

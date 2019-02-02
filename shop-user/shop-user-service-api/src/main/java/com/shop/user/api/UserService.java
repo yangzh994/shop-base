@@ -13,7 +13,11 @@ public interface UserService {
     @ResponseBody
     public User findUserByUserName(@PathVariable("name") String name);
 
-    @PostMapping("/save")
-    public void saveUser(@RequestBody User user);
+    @PostMapping("/register")
+    public void registerUser(@RequestBody User user);
+
+    @PostMapping("/login")
+    @ResponseBody
+    public User login(@RequestParam("username") String username,@RequestParam("password") String password);
 
 }
