@@ -8,10 +8,7 @@ import com.shop.user.entity.User;
 import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +20,6 @@ public class UserController {
     private UserServiceRPC userService;
 
     @PostMapping("/login")
-    @ResponseBody
     public String login(String username, String password, HttpServletResponse response){
         //验证用户密码
         User user = userService.login(username, password);
@@ -38,9 +34,11 @@ public class UserController {
         //user对象转为json串
         String userStr = JSON.toJSONString(user);
         //写入redis，设置半个小时清除
-        RedisClient.setex(token,userStr,30 * 60 * 60);
+        RedisClient.setex(token,userStr,30 * 60);
         //设置到cookie中
         Cookie cookie = new Cookie("user-token",token);
+        //设置cookie时间
+        cookie.setMaxAge(30 * 60);
         //设置共享域
         cookie.setDomain(".shop.com");
         cookie.setPath("/");
@@ -50,10 +48,14 @@ public class UserController {
         return "success";
     }
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 
     @RequestMapping("/token/{token}")
     @ResponseBody
-    public String checkLogin(@PathVariable("token") String token,String callback){
+    public String checkLogin(@PathVariable("token") String token,String callbk){
 
         String userStr = RedisClient.get(token);
 
@@ -62,13 +64,15 @@ public class UserController {
             return "login";
         }
 
-        RedisClient.setex(token,userStr,30 * 60 * 60);
+        RedisClient.setex(token,userStr,30 * 60 );
 
-        if("".equals(callback) || callback == null){
+        if("".equals(callbk) || callbk == null){
             return userStr;
         }
 
-        return callback + "(" + userStr + ")";
+        System.out.println("callbk :  " + callbk );
+
+        return callbk + "(" + userStr + ")";
 
     }
 }
